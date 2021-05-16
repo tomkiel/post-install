@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="smb://192.168.0.110/" added="2020-05-21T22:54:16Z" modified="2020-06-23T12:03:53Z" visited="2020-06-23T12:03:53Z">
+    <title>Compartilhamentos Windows em 192.168.0.110</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-06-23T12:03:53Z" count="5"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="ftp://192.168.0.103:1337/" added="2020-08-30T03:55:58Z" modified="2020-08-30T03:55:58Z" visited="2020-08-30T03:55:58Z">
+    <title>/ em 192.168.0.103:1337</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-08-30T03:55:58Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://paese_shell@umbahost.com.br/" added="2020-10-11T21:27:12Z" modified="2020-10-11T21:27:12Z" visited="2020-10-11T21:27:12Z">
+    <title>/ em umbahost.com.br</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-10-11T21:27:12Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://arkoestruturas_shell@umbahost.com.br/" added="2020-10-11T22:53:00Z" modified="2020-10-13T03:25:04Z" visited="2020-10-13T03:25:04Z">
+    <title>/ em umbahost.com.br</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-10-13T03:25:04Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://arkoestruturasup@srv.doseextra.com:2086/" added="2020-10-11T22:57:18Z" modified="2020-10-11T22:57:18Z" visited="2020-10-11T22:57:18Z">
+    <title>/ em srv.doseextra.com</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-10-11T22:57:18Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://root@srv.doseextra.com:2086/" added="2020-10-15T14:26:20Z" modified="2020-10-15T14:26:20Z" visited="2020-10-15T14:26:20Z">
+    <title>/ em srv.doseextra.com</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-10-15T14:26:20Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://fossday_shell@umbahost.com.br/" added="2020-10-15T23:54:36Z" modified="2020-10-15T23:54:36Z" visited="2020-10-15T23:54:36Z">
+    <title>/ em umbahost.com.br</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-10-15T23:54:36Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://tomkiel@192.168.1.222/" added="2020-10-28T13:29:34Z" modified="2020-10-28T13:29:34Z" visited="2020-10-28T13:29:34Z">
+    <title>/ em 192.168.1.222</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2020-10-28T13:29:34Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://toigo@159.203.85.104/" added="2021-04-09T09:17:24.528513Z" modified="2021-04-09T09:17:24.528523Z" visited="2021-04-09T09:17:24.528515Z">
+    <title>/ on 159.203.85.104</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2021-04-09T09:17:24.528518Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

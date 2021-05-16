@@ -1,0 +1,68 @@
+{
+    "window.menuBarVisibility": "toggle",
+    "terminal.integrated.shell.linux": "/usr/bin/fish",
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "tabnine.experimentalAutoImports": true,
+    "workbench.colorTheme": "Dracula",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.tabSize": 2,
+    "editor.fontLigatures": true,
+    "editor.semanticHighlighting.enabled": false,
+    "editor.rulers": [
+        80,
+        120
+    ],
+
+    "files.associations": {
+        ".sequelizerc": "javascript",
+        ".stylelintrc": "json",
+        ".prettierrc": "json",
+        "*.tsx": "typescriptreact"
+    },
+
+    "javascript.suggest.autoImports": true,
+    "typescript.suggest.autoImports": true,
+    "cSpell.userWords": [
+        "fluentui",
+        "jsonify",
+        "typesafe"
+    ],
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.fontSize": 13,
+    
+    "material-icon-theme.folders.associations": {
+      "infra": "app",
+      "entities": "class",
+      "domain": "class",
+      "schemas": "class",
+      "typeorm": "database",
+      "repositories": "mappings",
+      "http": "container",
+      "migrations": "tools",
+      "modules": "components",
+      "implementations": "core",
+      "dtos": "typescript",
+      "fakes": "mock",
+      "websockets": "pipe",
+      "protos": "pipe",
+      "grpc": "pipe",
+      "providers": "include",
+      "subscribers": "messages",
+      "useCases": "controller",
+      "kafka": "scripts",
+      "mappers": "meta",
+      "_shared": "shared",
+      "eslint-config": "tools",
+      "kube": "kubernetes"
+    },
+
+    "material-icon-theme.files.associations": {
+      "ormconfig.json": "database",
+      "tsconfig.json": "tune",
+      "*.proto": "3d",
+      "*.webpack.js": "webpack"
+    },
+    "cSpell.language": "en,pt"
+}
