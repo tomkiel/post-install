@@ -1,18 +1,19 @@
 #!/bin/bash
 
+# Determine git user and email address
+GIT_USERNAME=""
+GIT_EMAIL=""
+
 echo "#####################"
 echo "The scripts for configuring the GNU/Linux based operating system"
 
-echo "###"
-echo "##"
-echo "#"
-
+echo "#####################"
 echo "-> Update Fedora packages"
 sudo dnf -y update
 
 echo "#####################"
 echo "-> Install packages for Fedora"
-sudo dnf -y install vim neovim fish powerline powerline-fonts java-11-openjdk maven libwebp-tools alien neofetch -y
+sudo dnf -y install vim neovim fish powerline powerline-fonts java-11-openjdk maven libwebp-tools alien gtk-murrine-engine neofetch
 pip3 install pynvim
 pip install --user powerline-status
 pip install --user git+git://github.com/powerline/powerline
@@ -35,6 +36,7 @@ cp fish/functions/nvm.fish $HOME/.config/fish/functions/nvm.fish
 
 echo "#####################"
 echo "-> Configure neovim editor"
+mkdir -p $HOME/.config/nvim/
 cp nvim/init.vim $HOME/.config/nvim/init.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
@@ -47,8 +49,6 @@ sudo mv /tmp/gradle-6.8.3 /opt/gradle
 
 echo "####################"
 echo "-> Configure git globally"
-GIT_USERNAME=""
-GIT_EMAIL=""
 git config --global user.email "$GIT_EMAIL"
 git config --global user.name "$GIT_USERNAME"
 git config --global init.defaultBranch main
@@ -97,8 +97,8 @@ sudo mv /tmp/android-studio /opt/
 echo "####################"
 echo "-> Install Telegram Desktop"
 wget https://updates.tdesktop.com/tlinux/tsetup.2.7.4.tar.xz -P /tmp/
-tar -zxvf /tmp/tsetup.2.7.4.tar.xz --directory /tmp/
-sudo mv /tmp/tsetup.2.7.4/Telegram /opt/
+tar -xvf /tmp/tsetup.2.7.4.tar.xz --directory /tmp/
+sudo mv /tmp/Telegram /opt/
 
 echo "####################"
 echo "-> Install v4l2loopback from sentry/v4l2loopback"
@@ -110,7 +110,8 @@ echo "####################"
 echo "-> Install and configure Iriun Webcam"
 wget http://iriun.gitlab.io/iriunwebcam-2.3.1.deb -P /tmp/
 sudo alien -r /tmp/iriunwebcam-2.3.1.deb --target=x86_64
-sudo dnf -y install /tmp/iriunwebcam-2.3.1.x86_64.rpm
+sudo dnf -y install iriunwebcam-2.3.1.x86_64.rpm
+sudo rm -rf iriunwebcam-2.3.1.x86_64.rpm
 sudo modprobe v4l2loopback exclusive_caps=1
 
 echo "####################"
@@ -133,7 +134,7 @@ tar -zxvf /tmp/linuxbrowser0.6.1-obs23.0.2-64bit.tgz -C $HOME/.config/obs-studio
 
 echo "####################"
 echo "-> Install Microsoft Teams"
-wget https://packages.microsoft.com/yumrepos/ms-teams/teams-1.4.00.7556-1.x86_64.rpm /tmp/
+wget https://packages.microsoft.com/yumrepos/ms-teams/teams-1.4.00.7556-1.x86_64.rpm -P /tmp/
 sudo dnf -y localinstall /tmp/teams-1.4.00.7556-1.x86_64.rpm
 
 echo "####################"
@@ -160,9 +161,9 @@ cp -r user/gnome-shell/extensions/* $HOME/.local/share/gnome-shell/extensions/*
 echo " * Set window controls to the left (the correct location ;) )"
 gsettings set  org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
 echo " * Set default theme"
-gsettings set org.gnome.desktop.interface gtk-theme "WhiteSur-light"
+gsettings set org.gnome.desktop.interface gtk-theme "Ant"
 echo " * Set default window theme"
-gsettings set org.gnome.desktop.wm.preferences theme "WhiteSur-light"
+gsettings set org.gnome.desktop.wm.preferences theme "Ant"
 echo " * Set default icon theme"
 gsettings set org.gnome.desktop.interface icon-theme "Tela"
 echo " * Set background"

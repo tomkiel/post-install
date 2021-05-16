@@ -1,14 +1,12 @@
 #!/bin/bash
 
+# Determine git user and email address
+GIT_USERNAME=""
+GIT_EMAIL=""
+
 echo "#####################"
 echo "The scripts for configuring the GNU/Linux based operating system"
-
-echo "###"
-echo "##"
-echo "#"
-
-echo "-> Update openSUSE packages"
-sudo zypper update -y
+sudo zypper -n update
 
 echo "#####################"
 echo "-> Install packages for openSUSE"
