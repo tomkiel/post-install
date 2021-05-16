@@ -8,15 +8,16 @@ echo "##"
 echo "#"
 
 echo "-> Update Fedora packages"
-sudo dnf update -y && sudo dnf upgrade -y
+sudo dnf -y update
 
 echo "#####################"
 echo "-> Install packages for Fedora"
-sudo dnf install vim neovim fish powerline powerline-fonts java-11-openjdk maven libwebp-tools alien neofetch -y
+sudo dnf -y install vim neovim fish powerline powerline-fonts java-11-openjdk maven libwebp-tools alien neofetch -y
 pip3 install pynvim
 pip install --user powerline-status
 pip install --user git+git://github.com/powerline/powerline
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -P /tmp/
+mkdir -p $HOME/.local/share/fonts/
 mv /tmp/PowerlineSymbols.otf $HOME/.local/share/fonts/
 wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -P /tmp/
 mkdir -p $HOME/.config/fontconfig/conf.d/
@@ -28,7 +29,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
 echo "#####################"
 echo "-> Copy fish config"
-mkdir -p $HOME/.config/fish/
+mkdir -p $HOME/.config/fish/functions
 cp fish/fedora_config.fish $HOME/.config/fish/config.fish
 cp fish/functions/nvm.fish $HOME/.config/fish/functions/nvm.fish
 
@@ -73,6 +74,7 @@ sudo dnf -y install code
 echo "####################"
 echo "-> Configure Visual Studio Code"
 git clone https://gist.github.com/81b9df6183d85b65cbc2e572df6e4e13.git /tmp/vscode-settings/
+mkdir -p $HOME/.config/Code/User/
 mv /tmp/vscode-settings/VSCode\ Settings $HOME/.config/Code/User/settings.json
 git clone https://gist.github.com/b191d5341839aa9b63d48f9514d09d45.git /tmp/vscode-extensions/
 echo "-> Install Visual Studio Extensions"
@@ -96,7 +98,7 @@ echo "####################"
 echo "-> Install Telegram Desktop"
 wget https://updates.tdesktop.com/tlinux/tsetup.2.7.4.tar.xz -P /tmp/
 tar -zxvf /tmp/tsetup.2.7.4.tar.xz --directory /tmp/
-sudo mv tsetup.2.7.4/Telegram /opt/
+sudo mv /tmp/tsetup.2.7.4/Telegram /opt/
 
 echo "####################"
 echo "-> Install v4l2loopback from sentry/v4l2loopback"
@@ -125,7 +127,6 @@ echo "-> Install and configure OBS Studio"
 echo " * Enable RPM Fusion"
 sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf -y install obs-studio
-sudo dnf -y install xorg-x11-drv-nvidia-cuda
 mkdir -p $HOME/.config/obs-studio/plugins
 wget https://github.com/bazukas/obs-linuxbrowser/releases/download/0.6.1/linuxbrowser0.6.1-obs23.0.2-64bit.tgz -P /tmp/
 tar -zxvf /tmp/linuxbrowser0.6.1-obs23.0.2-64bit.tgz -C $HOME/.config/obs-studio/plugins/
