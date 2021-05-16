@@ -12,14 +12,14 @@ sudo dnf update -y && sudo dnf upgrade -y
 
 echo "#####################"
 echo "-> Install packages for Fedora"
-sudo dnf install vim neovim fish powerline powerline-fonts java-11-openjdk maven webp alien neofetch -y
+sudo dnf install vim neovim fish powerline powerline-fonts java-11-openjdk maven libwebp-tools alien neofetch -y
 pip3 install pynvim
 pip install --user powerline-status
 pip install --user git+git://github.com/powerline/powerline
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -P /tmp/
 mv /tmp/PowerlineSymbols.otf $HOME/.local/share/fonts/
 wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -P /tmp/
-mkdir $HOME/.config/fontconfig/conf.d/
+mkdir -p $HOME/.config/fontconfig/conf.d/
 mv /tmp/10-powerline-symbols.conf $HOME/.config/fontconfig/conf.d/
 
 echo "#####################"
@@ -28,19 +28,9 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
 echo "#####################"
 echo "-> Copy fish config"
+mkdir -p $HOME/.config/fish/
 cp fish/fedora_config.fish $HOME/.config/fish/config.fish
 cp fish/functions/nvm.fish $HOME/.config/fish/functions/nvm.fish
-fish source $HOME/.config/fish/config.fish
-
-echo "#####################"
-echo "-> Install Oh My Fish Shell"
-curl -L https://get.oh-my.fish | fish
-
-echo "#####################"
-echo "-> Configure fish shell"
-omf update
-omf install agnoster
-omf install bass
 
 echo "#####################"
 echo "-> Configure neovim editor"
@@ -49,10 +39,9 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 echo "#####################"
 echo "-> Install and configure Gradle (Java)"
-GRADLE_VERSION=6.8.3
-wget https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip -P /tmp/
-unzip /tmp/gradle-$GRADLE_VERSION-bin.zip  -d /tmp/
-sudo mv /tmp/gradle-$GRADLE_VERSION-bin /opt/gradle
+wget https://services.gradle.org/distributions/gradle-6.8.3-bin.zip -P /tmp/
+unzip /tmp/gradle-6.8.3-bin.zip  -d /tmp/
+sudo mv /tmp/gradle-6.8.3 /opt/gradle
 
 
 echo "####################"
@@ -78,8 +67,8 @@ echo "####################"
 echo "-> Install Visual Studio Code"
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-sudo dnf check-update
-sudo dnf install code
+sudo dnf -y check-update
+sudo dnf -y install code
 
 echo "####################"
 echo "-> Configure Visual Studio Code"
@@ -110,11 +99,16 @@ tar -zxvf /tmp/tsetup.2.7.4.tar.xz --directory /tmp/
 sudo mv tsetup.2.7.4/Telegram /opt/
 
 echo "####################"
+echo "-> Install v4l2loopback from sentry/v4l2loopback"
+sudo dnf -y copr enable sentry/v4l2loopback
+sudo dnf -y install v4l2loopback
+sudo dnf -y install v4l2loopback-dkms
+
+echo "####################"
 echo "-> Install and configure Iriun Webcam"
-sudo dnf install v4l2loopback
 wget http://iriun.gitlab.io/iriunwebcam-2.3.1.deb -P /tmp/
 sudo alien -r /tmp/iriunwebcam-2.3.1.deb --target=x86_64
-sudo dnf install /tmp/iriunwebcam-2.2-2.x86_64.rpm
+sudo dnf -y install /tmp/iriunwebcam-2.3.1.x86_64.rpm
 sudo modprobe v4l2loopback exclusive_caps=1
 
 echo "####################"
@@ -129,7 +123,7 @@ sudo usermod -G docker -a $USER
 echo "####################"
 echo "-> Install and configure OBS Studio"
 echo " * Enable RPM Fusion"
-sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf -y install obs-studio
 sudo dnf -y install xorg-x11-drv-nvidia-cuda
 mkdir -p $HOME/.config/obs-studio/plugins
@@ -142,7 +136,9 @@ wget https://packages.microsoft.com/yumrepos/ms-teams/teams-1.4.00.7556-1.x86_64
 sudo dnf -y localinstall /tmp/teams-1.4.00.7556-1.x86_64.rpm
 
 echo "####################"
-echo "-> Configure user informations"
+echo "-> Configure user ambient"
+echo " * Create Project path"
+mkdir $HOME/Projects
 echo " * Configure face (User image)"
 cp user/face.jpg $HOME/.face
 cp user/face.jpg $HOME/Pictures/me.jpg
@@ -171,6 +167,10 @@ gsettings set org.gnome.desktop.interface icon-theme "Tela"
 echo " * Set background"
 gsettings set org.gnome.desktop.background picture-uri "file:///$HOME/Pictures/Wallpapers/alex-robert-sbwuDopIUPI-unsplash.jpg"
 
+echo "####################"
+echo "-> Configure .webp files"
+sudo cp -r thumbnail/* /usr/share/thumbnailers
+rm -rf $HOME/.cache/thumbnails/*
 
 echo "####################"
 echo "-> Install desktop apps"
@@ -183,5 +183,12 @@ echo " * Gnome-tweaks"
 sudo dnf -y install gnome-tweaks gnome-extensions-app
 echo " * GIMP, Audacity and Inkscape"
 sudo dnf -y install gimp audacity inkscape
+
+echo "#####################"
+echo "All done!"
+echo "Run ./fish_config.sh in the fish shell"
+fish source $HOME/.config/fish/config.fish
+
+
 
 
