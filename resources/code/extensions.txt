@@ -1,0 +1,3 @@
+dracula-theme.theme-dracula
+eamodio.gitlens
+esbenp.prettier-vscode
